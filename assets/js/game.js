@@ -1,9 +1,16 @@
-// fight function (now with parameter for enemy's name)
+/* GAME FUNCTIONS */
+
+// function to generate a random numeric value
+var randomNumber = function(min, max) {
+    var value = Math.floor(Math.random() * (max - min + 1) + min);
+
+    return value;
+};
+
+// fight function (now with parameter for enemy's object holding name, health, and attack values)
 var fight = function(enemy) {
     // repeat and execute as long as the enemy-robot is alive
     while (playerInfo.health > 0 && enemy.health > 0) {
-        // fight function statements
-
         // ask player if they'd like to fight or run
         var promptFight = window.prompt("Would you like to FIGHT or SKIP this battle? Enter 'FIGHT' or 'SKIP' to choose.");
         console.log(promptFight);
@@ -83,13 +90,10 @@ var startGame = function () {
             // pick new enemy to fight based on the index of the enemy.names array
             var pickedEnemyObj = enemyInfo[i];
 
-            // reset enemy.health before starting new fight
+            // set enemy.health before starting new fight
             pickedEnemyObj.health = randomNumber(40, 60);
 
-            // use debugger to pause script from running and check what's going on at that moment in the code
-            // debugger;
-
-            // pass the pickedenemy.name variable's value into the fight function, where it will assume the value of the enemy.name parameter
+            // pass the pickedEnemyObj variable's value into the fight function, where it will assume the value of the enemy parameter
             fight(pickedEnemyObj);
 
             //if player is still alive and we're not at the last enemy in the array
@@ -166,13 +170,11 @@ var shop = function () {
     }
 };
 
-// function to generate a random numeric value
-var randomNumber = function(min, max) {
-    var value = Math.floor(Math.random() * (max - min + 1) + min);
+/* END GAME FUNCTIONS */
 
-    return value;
-}
+/* GAME INFORMATION / VARIABLES */
 
+// player information
 var playerInfo = {
     name: window.prompt("What is your robot's name?"),
     health: 100,
@@ -205,6 +207,7 @@ var playerInfo = {
     }
 };
 
+// enemy information
 var enemyInfo = [
     {
         name: "Roborto",
@@ -220,6 +223,13 @@ var enemyInfo = [
     }
 ];
 
-// start first game when the page loads
+console.log(enemyInfo);
+console.log(enemyInfo[0]);
+console.log(enemyInfo[0].name);
+console.log(enemyInfo[0]['attack']);
+
+/* END GAME INFORMATION / VARIABLES */
+
+/* RUN GAME */
 startGame();
 
