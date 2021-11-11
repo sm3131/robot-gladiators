@@ -42,18 +42,23 @@ var fightOrSkip = function() {
 
 // fight function (now with parameter for enemy's object holding name, health, and attack values)
 var fight = function (enemy) {
+    var isPlayerTurn = true;
+    if (Math.random() > 0.5) {
+        isPlayerTurn = false;
+    }
     // repeat and execute as long as the enemy-robot is alive
     while (playerInfo.health > 0 && enemy.health > 0) {
+        if (isPlayerTurn) {
         // ask player if they'd like to fight or skip using the fightOrSkip function
         if (fightOrSkip()) {
             // if true, leave fight by breaking loop
             break;
         }
-        // remove enemy's health by subtracting the amount set in the playerInfo.attack variable
         // generate random damage value based on player's attack power
         var damage = randomNumber(playerInfo.attack - 3, playerInfo.attack);
         console.log("damage", damage)
 
+        // remove enemy's health by subtracting the amount set in the playerInfo.attack variable
         enemy.health = Math.max(0, enemy.health - damage);
         // Log a resulting message to the console so we know that it worked.
         console.log(
@@ -71,12 +76,13 @@ var fight = function (enemy) {
         } else {
             window.alert(enemy.name + " still has " + enemy.health + " health left.");
         }
-
-        // remove player's health by subtracting the amount set in the enemy.attack variable
+       // player gets attacked first 
+    } else {
         // generate random damage value based on enemy's attack power
         var damage = randomNumber(enemy.attack - 3, enemy.attack);
         console.log("damage", damage)
-
+        
+        // remove player's health by subtracting the amount set in the enemy.attack variable
         playerInfo.health = Math.max(0, playerInfo.health - damage);
 
         // Log a resulting message to the console so we know that it worked.
@@ -92,6 +98,9 @@ var fight = function (enemy) {
         } else {
             window.alert(playerInfo.name + " still has " + playerInfo.health + " health left.");
         }
+    }
+    // switch turn order for next round
+    isPlayerTurn = !isPlayerTurn;
     }
 };
 
