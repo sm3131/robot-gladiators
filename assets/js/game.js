@@ -126,7 +126,7 @@ var startGame = function () {
             pickedEnemyObj.health = randomNumber(40, 60);
 
             console.log(pickedEnemyObj);
-            
+
             // pass the pickedEnemyObj variable's value into the fight function, where it will assume the value of the enemy parameter
             fight(pickedEnemyObj);
 
