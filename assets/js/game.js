@@ -168,7 +168,6 @@ var endGame = function () {
 
         alert(playerInfo.name + " now has the high score of " + playerInfo.money + "!")
     }
-
     else {
         alert(playerInfo.name + " did not beat the high score of " + highScore + ". Maybe next time!");
     }
@@ -206,15 +205,11 @@ var shop = function () {
             break;
         default:
             window.alert("You did not pick a valid option. Try again.");
-
             // call shop() again to force player to pick a valid option
             shop();
             break;
     }
 };
-
-/* END GAME FUNCTIONS */
-
 
 // function to set name
 var getPlayerName = function () {
@@ -225,6 +220,8 @@ var getPlayerName = function () {
     console.log("Your robot's name is " + name);
     return name;
 }
+
+/* END GAME FUNCTIONS */
 
 /* GAME INFORMATION / VARIABLES */
 
@@ -276,11 +273,6 @@ var enemyInfo = [
         attack: randomNumber(10, 14)
     }
 ];
-
-console.log(enemyInfo);
-console.log(enemyInfo[0]);
-console.log(enemyInfo[0].name);
-console.log(enemyInfo[0]['attack']);
 
 /* END GAME INFORMATION / VARIABLES */
 
